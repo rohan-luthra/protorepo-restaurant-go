@@ -541,47 +541,6 @@ func (m *AddRestaurantReq) Validate() error {
 
 	// no validation rules for Password
 
-	// no validation rules for ContactNumber
-
-	// no validation rules for PersonOfContact
-
-	// no validation rules for Logo
-
-	// no validation rules for ProfileImage
-
-	// no validation rules for Active
-
-	if v, ok := interface{}(m.GetAddress()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return AddRestaurantReqValidationError{
-				field:  "Address",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
-
-	for idx, item := range m.GetTimings() {
-		_, _ = idx, item
-
-		if v, ok := interface{}(item).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return AddRestaurantReqValidationError{
-					field:  fmt.Sprintf("Timings[%v]", idx),
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
-			}
-		}
-
-	}
-
-	// no validation rules for SubscriptionPlan
-
-	// no validation rules for SubscriptionPrice
-
-	// no validation rules for DefaultCurrenyId
-
 	return nil
 }
 
