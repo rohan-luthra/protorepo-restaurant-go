@@ -138,13 +138,9 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type CurrencyServiceClient interface {
-	// Adds a new Curreny
 	AddCurrency(ctx context.Context, in *Currency, opts ...grpc.CallOption) (*Id, error)
-	// Updates current Currency
 	UpdateCurrency(ctx context.Context, in *Currency, opts ...grpc.CallOption) (*Id, error)
-	// Remove Curreny if not used by any restaurant
 	RemoveCurrency(ctx context.Context, in *Id, opts ...grpc.CallOption) (*Id, error)
-	// Get All the Currecny
 	GetCurrencies(ctx context.Context, in *Empty, opts ...grpc.CallOption) (CurrencyService_GetCurrenciesClient, error)
 }
 
@@ -217,13 +213,9 @@ func (x *currencyServiceGetCurrenciesClient) Recv() (*Currency, error) {
 
 // CurrencyServiceServer is the server API for CurrencyService service.
 type CurrencyServiceServer interface {
-	// Adds a new Curreny
 	AddCurrency(context.Context, *Currency) (*Id, error)
-	// Updates current Currency
 	UpdateCurrency(context.Context, *Currency) (*Id, error)
-	// Remove Curreny if not used by any restaurant
 	RemoveCurrency(context.Context, *Id) (*Id, error)
-	// Get All the Currecny
 	GetCurrencies(*Empty, CurrencyService_GetCurrenciesServer) error
 }
 
