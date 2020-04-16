@@ -541,6 +541,28 @@ func (m *AddRestaurantReq) Validate() error {
 
 	// no validation rules for Password
 
+	// no validation rules for Logo
+
+	// no validation rules for ProfileImage
+
+	// no validation rules for Active
+
+	if v, ok := interface{}(m.GetAddress()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return AddRestaurantReqValidationError{
+				field:  "Address",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	// no validation rules for SubscriptionPlan
+
+	// no validation rules for SubscriptionPrice
+
+	// no validation rules for DefaultCurrenyId
+
 	return nil
 }
 
