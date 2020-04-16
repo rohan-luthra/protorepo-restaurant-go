@@ -114,9 +114,9 @@ var _ interface {
 	ErrorName() string
 } = PaymentValidationError{}
 
-// Validate checks the field values on Slots with the rules defined in the
-// proto definition for this message. If any rules are violated, an error is returned.
-func (m *Slots) Validate() error {
+// Validate checks the field values on Slot with the rules defined in the proto
+// definition for this message. If any rules are violated, an error is returned.
+func (m *Slot) Validate() error {
 	if m == nil {
 		return nil
 	}
@@ -128,9 +128,9 @@ func (m *Slots) Validate() error {
 	return nil
 }
 
-// SlotsValidationError is the validation error returned by Slots.Validate if
-// the designated constraints aren't met.
-type SlotsValidationError struct {
+// SlotValidationError is the validation error returned by Slot.Validate if the
+// designated constraints aren't met.
+type SlotValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -138,22 +138,22 @@ type SlotsValidationError struct {
 }
 
 // Field function returns field value.
-func (e SlotsValidationError) Field() string { return e.field }
+func (e SlotValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e SlotsValidationError) Reason() string { return e.reason }
+func (e SlotValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e SlotsValidationError) Cause() error { return e.cause }
+func (e SlotValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e SlotsValidationError) Key() bool { return e.key }
+func (e SlotValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e SlotsValidationError) ErrorName() string { return "SlotsValidationError" }
+func (e SlotValidationError) ErrorName() string { return "SlotValidationError" }
 
 // Error satisfies the builtin error interface
-func (e SlotsValidationError) Error() string {
+func (e SlotValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -165,14 +165,14 @@ func (e SlotsValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sSlots.%s: %s%s",
+		"invalid %sSlot.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = SlotsValidationError{}
+var _ error = SlotValidationError{}
 
 var _ interface {
 	Field() string
@@ -180,7 +180,7 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = SlotsValidationError{}
+} = SlotValidationError{}
 
 // Validate checks the field values on Timings with the rules defined in the
 // proto definition for this message. If any rules are violated, an error is returned.
@@ -276,9 +276,13 @@ func (m *Address) Validate() error {
 
 	// no validation rules for City
 
+	// no validation rules for CityId
+
 	// no validation rules for State
 
 	// no validation rules for Country
+
+	// no validation rules for CountryId
 
 	// no validation rules for Pincode
 
