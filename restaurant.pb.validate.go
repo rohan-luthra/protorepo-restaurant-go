@@ -370,14 +370,19 @@ func (m *Restaurant) Validate() error {
 
 	// no validation rules for HashwordSalt
 
-	if v, ok := interface{}(m.GetContact()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return RestaurantValidationError{
-				field:  "Contact",
-				reason: "embedded message failed validation",
-				cause:  err,
+	for idx, item := range m.GetContacts() {
+		_, _ = idx, item
+
+		if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return RestaurantValidationError{
+					field:  fmt.Sprintf("Contacts[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
 			}
 		}
+
 	}
 
 	// no validation rules for PersonOfContact
